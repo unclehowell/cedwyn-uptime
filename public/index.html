@@ -3,66 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="app-version" content="1.0.0">
-<title>Uptime · Archwilio and its controls · Cedwyn Estate</title>
-<meta name="description" content="Up or down: Archwilio (the Welsh Historic Environment Records) and the record GGAT02038s, with Coflein and Heneb as controls. Checked twice a day at 06:00 and 18:00 UTC; a change counts after two checks in a row; 90 days of outages.">
-<link rel="canonical" href="https://cedwyn.bucklerfamily.estate/uptime/">
-<meta property="og:title" content="Uptime · Archwilio and its controls · Cedwyn Estate">
-<meta property="og:description" content="Is Archwilio up? Checked twice a day, with Coflein and Heneb as controls, and 90 days of outages.">
-<meta property="og:url" content="https://cedwyn.bucklerfamily.estate/uptime/">
+<meta name="app-version" content="2.0.0">
+<title>Change log · Archwilio and its controls · Cedwyn Estate</title>
+<meta name="description" content="A change log of the Archwilio pages (the Welsh Historic Environment Records) and the record GGAT02038s, with Coflein and Heneb as controls. Each page's visible text is read twice a day at 06:00 and 18:00 UTC and compared with the last check; a graph and a text log for each page.">
+<link rel="canonical" href="https://bucklerfamily.estate/uptime/">
+<meta property="og:title" content="Change log · Archwilio and its controls · Cedwyn Estate">
+<meta property="og:description" content="Has the Archwilio record changed? Read twice a day, with Coflein and Heneb as controls. Graph and text log per page.">
+<meta property="og:url" content="https://bucklerfamily.estate/uptime/">
 <meta name="theme-color" content="#11161c">
 <style>
-:root{color-scheme:light dark;--bg:#f6f4ef;--panel:#fff;--ink:#1d2329;--body:#38424b;--muted:#6b7680;--line:#d9d4ca;--up:#1f7a46;--dn:#b3261e;--pend:#9a6a00}
-html[data-ghf-mode=night]{--bg:#11161c;--panel:#18202a;--ink:#f1f3f5;--body:#c9d1d8;--muted:#93a0ab;--line:#2f3b47;--up:#5fd08f;--dn:#ff8a80;--pend:#f0c75e}
+:root{color-scheme:light dark;--bg:#f6f4ef;--panel:#fff;--ink:#1d2329;--body:#38424b;--muted:#6b7680;--line:#d9d4ca;--ch:#b5530b;--ok:#8a949d;--nr:#c9c3b8;--acc:#245b8f}
+html[data-ghf-mode=night]{--bg:#11161c;--panel:#18202a;--ink:#f1f3f5;--body:#c9d1d8;--muted:#93a0ab;--line:#2f3b47;--ch:#ffad66;--ok:#6d7a86;--nr:#3a4652;--acc:#8cc4ff}
 *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--body);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-.up-wrap{max-width:980px;margin:0 auto;padding:20px 16px 56px}
-.up-eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cl-wrap{max-width:980px;margin:0 auto;padding:20px 16px 56px}
+.cl-eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 h1{font-size:clamp(1.8rem,6vw,2.8rem);line-height:1.08;margin:6px 0 8px;color:var(--ink);letter-spacing:-.03em}
-.up-lede{margin:0 0 14px;max-width:62ch}
-.up-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-.up-pill{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 11px;font-size:13px}
-.up-pill b{color:var(--ink)}
-.up-ver{display:inline-flex;align-items:center;gap:6px}
-.up-i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:700 12px/1 Georgia,serif;cursor:pointer;padding:0}
+.cl-lede{margin:0 0 14px;max-width:62ch}
+.cl-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.cl-pill{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 11px;font-size:13px}
+.cl-pill b{color:var(--ink)}
+.cl-ver{display:inline-flex;align-items:center;gap:6px}
+.cl-i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:700 12px/1 Georgia,serif;cursor:pointer;padding:0}
 section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 12px 6px;margin:0 0 16px}
 h2{font-size:1.05rem;margin:2px 0 10px;color:var(--ink)}
-.up-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:8px}
-.up-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;border-left:5px solid var(--muted)}
-.up-card.is-up{border-left-color:var(--up)}.up-card.is-dn{border-left-color:var(--dn)}
-.up-name{font-weight:700;color:var(--ink)}.up-url{font-size:12px;color:var(--muted);word-break:break-all}
-.up-state{font-weight:800;margin-top:4px}.is-up .up-state{color:var(--up)}.is-dn .up-state{color:var(--dn)}
-.up-small{font-size:13px;color:var(--muted)}.up-pend{color:var(--pend);font-size:13px;font-weight:600}
-.up-spark{display:flex;gap:3px;margin-top:6px}.up-spark i{display:block;width:12px;height:12px;border-radius:2px;background:var(--up)}.up-spark i.b{background:var(--dn)}
-.up-tw{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
-th,td{text-align:left;padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600;border-top:0}
-.up-note{font-size:13px;color:var(--muted);margin:6px 0 10px}
-dialog{max-width:min(560px,92vw);border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--body)}
+.cl-rows{list-style:none;margin:0;padding:0}
+.cl-row{display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding:10px 2px}
+.cl-row:first-child{border-top:0}
+.cl-txt{flex:1;min-width:0}
+.cl-name{font-weight:700;color:var(--ink)}.cl-url{font-size:12px;color:var(--muted);word-break:break-all}
+.cl-state{font-size:13.5px;color:var(--muted);margin-top:2px}
+.cl-row.is-ch .cl-state{color:var(--ch);font-weight:700}
+.cl-row.is-ch{border-left:4px solid var(--ch);padding-left:8px}
+.cl-g{flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--acc);cursor:pointer;display:grid;place-items:center;padding:0}
+.cl-g svg{width:24px;height:24px}
+.cl-note{font-size:13px;color:var(--muted);margin:6px 0 10px}
+dialog{width:min(640px,94vw);max-width:94vw;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--body);padding:14px}
 dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h2{margin:0 0 2px}
+.cl-sub{font-size:12px;color:var(--muted);word-break:break-all;margin:0 0 10px}
+.cl-tg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:0 0 10px}
+.cl-tg button{border:0;background:transparent;color:var(--body);padding:6px 14px;font:600 13px system-ui,sans-serif;cursor:pointer;min-height:36px}
+.cl-tg button[aria-pressed=true]{background:var(--ink);color:var(--panel)}
+.cl-chart{width:100%;height:auto;display:block}
+.cl-key{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:6px 0}
+.cl-key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.cl-log{list-style:none;margin:0;padding:0;max-height:55vh;overflow:auto}
+.cl-log li{border-top:1px solid var(--line);padding:8px 0;font-size:13.5px}
+.cl-log li:first-child{border-top:0}
+.cl-log time{display:block;font-weight:700;color:var(--ink)}
+.cl-log q{display:block;font-size:12.5px;color:var(--muted);margin:2px 0 0;quotes:none}
+.cl-x{margin-top:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 14px;cursor:pointer;min-height:36px}
+.cl-tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600;border-top:0}
 </style>
 <script>window.__cedwynLP="/uptime/"</script><script src="/_cedwyn/ghf/ghf-boot.js?v=2.1.30"></script>
 </head>
 <body>
-<main class="up-wrap" id="up" data-version="1.0.0">
-  <div class="up-eyebrow">Cedwyn · record availability</div>
-  <h1>Uptime: Archwilio and its controls</h1>
-  <p class="up-lede">Whether the Welsh Historic Environment Records site Archwilio, and its record GGAT02038s, answer. Coflein and Heneb are checked at the same moment as controls, so an outage on one site can be told apart from a wider one.</p>
-  <div class="up-meta">
-    <span class="up-pill">Checked <b>twice a day</b>: 06:00 and 18:00 UTC</span>
-    <span class="up-pill">Last check: <b id="up-last">loading…</b></span>
-    <span class="up-pill">Next check: <b id="up-next">…</b></span>
-    <span class="up-pill up-ver">v1.0.0 · free <button type="button" class="up-i" id="up-i" aria-haspopup="dialog" aria-controls="up-log" title="Version history">i</button></span>
+<main class="cl-wrap" id="cl" data-version="2.0.0">
+  <div class="cl-eyebrow">Cedwyn · change log monitor</div>
+  <h1>Change log: Archwilio and its controls</h1>
+  <p class="cl-lede">Whether the pages of Archwilio, the Welsh Historic Environment Records site, and its record GGAT02038s change. Each check reads the visible text of every page and compares it with the last check. No change, no news. Coflein and Heneb are read at the same moment as controls.</p>
+  <div class="cl-meta">
+    <span class="cl-pill">Read <b>twice a day</b>: 06:00 and 18:00 UTC</span>
+    <span class="cl-pill">Last check: <b id="cl-last">loading…</b></span>
+    <span class="cl-pill">Next check: <b id="cl-next">…</b></span>
+    <span class="cl-pill">Changes, last 90 days: <b id="cl-n">…</b></span>
+    <span class="cl-pill cl-ver">v2.0.0 · free <button type="button" class="cl-i" id="cl-i" aria-haspopup="dialog" aria-controls="cl-ver" title="Version history">i</button></span>
   </div>
-  <section aria-labelledby="up-now-h"><h2 id="up-now-h">Now</h2><div class="up-cards" id="up-cards"><p class="up-note">Loading the latest check…</p></div></section>
-  <section aria-labelledby="up-out-h"><h2 id="up-out-h">Outages, last 90 days</h2><div class="up-tw" id="up-out"><p class="up-note">Loading…</p></div></section>
-  <p class="up-note">A site counts as up when it answers with HTTP 200–399 within 25 seconds. A change of state counts only after two checks in a row agree; the confirming re-check runs five minutes after a check that differs. HTTP 0 means no answer within 25 s; 52x means the site's own server did not answer its CDN. The site addresses are shown as text only. Data: <a href="uptime.json">uptime.json</a> (live).</p>
-  <noscript><p class="up-note">This page needs JavaScript to show the checks; the raw data is at uptime.json in this folder.</p></noscript>
+  <section aria-labelledby="cl-w-h"><h2 id="cl-w-h">Watched pages</h2><ul class="cl-rows" id="cl-rows"><li class="cl-note">Loading the latest check…</li></ul></section>
+  <p class="cl-note">A page counts as changed when its visible text differs from the text read at the check before; scripts, styles and the page's own "printed at" time stamp are left out. A check where the page did not answer is marked "not read" and is never counted as a change. Tap the graph button on a row for that page's graph and text log. Data: <a href="uptime.json">uptime.json</a> (live).</p>
+  <noscript><p class="cl-note">This page needs JavaScript to show the checks; the raw data is at uptime.json in this folder.</p></noscript>
 </main>
-<dialog id="up-log" aria-label="Version history"><h2>Version history</h2>
-<table><thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead><tbody>
-<tr><td>v1.0.0</td><td>11 Nov 2026</td><td>The uptime page becomes its own Cedwyn webapp at /uptime/. Checks move from every 5 minutes to twice a day (06:00 and 18:00 UTC) with a 5-minute confirm re-check. Shared header, footer and Day/Night theme.</td></tr>
-<tr><td>v0.1.0</td><td>24 Oct 2026</td><td>First uptime page on the change monitor, checked every 5 minutes.</td></tr>
-</tbody></table><p><button type="button" id="up-log-x">Close</button></p></dialog>
+<dialog id="cl-m" aria-labelledby="cl-m-h">
+  <h2 id="cl-m-h">Page</h2><p class="cl-sub" id="cl-m-u"></p>
+  <div class="cl-tg" role="group" aria-label="View"><button type="button" id="cl-vg" aria-pressed="true">Graph</button><button type="button" id="cl-vt" aria-pressed="false">Text log</button></div>
+  <div id="cl-pg"></div><div id="cl-pt" hidden></div>
+  <button type="button" class="cl-x" id="cl-m-x">Close</button>
+</dialog>
+<dialog id="cl-ver" aria-label="Version history"><h2>Version history</h2>
+<div class="cl-tw"><table><thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead><tbody>
+<tr><td>v2.0.0</td><td>11 Nov 2026</td><td>Becomes a change log monitor: each check compares every page's visible text with the last check. A graph button on each row opens that page's graph of changes per check, with a text log view.</td></tr>
+<tr><td>v1.0.0</td><td>11 Nov 2026</td><td>Own Cedwyn webapp at /uptime/ (webapp 59 of 59). Checks move from every 5 minutes to twice a day (06:00 and 18:00 UTC). Shared header, footer and Day/Night theme.</td></tr>
+<tr><td>v0.1.0</td><td>24 Oct 2026</td><td>First page on the change monitor: whether each site answered, every 5 minutes.</td></tr>
+</tbody></table></div><button type="button" class="cl-x" id="cl-ver-x">Close</button></dialog>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
@@ -70,32 +94,61 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var lon;try{lon=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});}catch(e){lon=null;}
   function t(s){if(!s)return '';var d=new Date(s);if(isNaN(d))return s;var hm=s.slice(11,16);var u=d.getUTCDate()+' '+M[d.getUTCMonth()]+' '+d.getUTCFullYear()+', '+hm+' UTC';try{var l=lon&&lon.format(d);if(l&&l!==hm)u+=' ('+l+' UK)';}catch(e){}return u;}
-  function dur(m){if(m==null)return '';if(m<120)return m+' min';var h=Math.round(m/6)/10;return h<48?h+' h':Math.round(h/2.4)/10+' days';}
-  var dlg=$('up-log');$('up-i').onclick=function(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');};
-  $('up-log-x').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open');};
-  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  function dshort(s){var d=new Date(s);return isNaN(d)?'':d.getUTCDate()+' '+M[d.getUTCMonth()];}
+  function pl(n,w){return n+' '+w+(n===1?'':'s');}
+  function openD(d){if(d.showModal)d.showModal();else d.setAttribute('open','');}
+  function closeD(d){if(d.close)d.close();else d.removeAttribute('open');}
+  [['cl-ver','cl-ver-x'],['cl-m','cl-m-x']].forEach(function(p){var d=$(p[0]);$(p[1]).onclick=function(){closeD(d);};d.addEventListener('click',function(e){if(e.target===d)closeD(d);});});
+  $('cl-i').onclick=function(){openD($('cl-ver'));};
+  function view(g){$('cl-vg').setAttribute('aria-pressed',g?'true':'false');$('cl-vt').setAttribute('aria-pressed',g?'false':'true');$('cl-pg').hidden=!g;$('cl-pt').hidden=g;}
+  $('cl-vg').onclick=function(){view(true);};$('cl-vt').onclick=function(){view(false);};
+  var ICON='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>';
+  function chart(x){
+    var c=(x.chk||[]).slice().reverse();var W=600,H=230,L=40,R=8,T=14,B=44,iw=W-L-R,ih=H-T-B;
+    if(!c.length)return '<p class="cl-note">No checks recorded yet. The first check sets the baseline; changes are counted from then on.</p>';
+    var n=c.length,step=iw/Math.max(n,1),bw=Math.max(1.5,Math.min(14,step*0.7)),cum=0,tot=0,nr=0,parts=[],line=[];
+    c.forEach(function(k){if(k[1]===1)tot++;});var ymax=Math.max(1,tot);
+    c.forEach(function(k,i){var cx=L+step*i+step/2,m=k[1];
+      if(m===1){cum++;parts.push('<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+(T+ih*0.35)+'" width="'+bw.toFixed(1)+'" height="'+(ih*0.65).toFixed(1)+'" fill="var(--ch)"><title>'+esc(t(k[0]))+': changed</title></rect>');}
+      else if(m===-1){nr++;parts.push('<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+(T+ih-6)+'" width="'+bw.toFixed(1)+'" height="6" fill="var(--nr)"><title>'+esc(t(k[0]))+': not read</title></rect>');}
+      else parts.push('<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+(T+ih-2)+'" width="'+bw.toFixed(1)+'" height="2" fill="var(--ok)"><title>'+esc(t(k[0]))+(m===2?': baseline set':': no change')+'</title></rect>');
+      line.push(cx.toFixed(1)+','+(T+ih-ih*cum/ymax).toFixed(1));});
+    var ax='<line x1="'+L+'" y1="'+(T+ih)+'" x2="'+(W-R)+'" y2="'+(T+ih)+'" stroke="var(--line)"/><line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(T+ih)+'" stroke="var(--line)"/>'+
+      '<text x="'+(L-6)+'" y="'+(T+8)+'" text-anchor="end" font-size="20" fill="var(--muted)">'+ymax+'</text><text x="'+(L-6)+'" y="'+(T+ih)+'" text-anchor="end" font-size="20" fill="var(--muted)">0</text>'+
+      '<text x="'+L+'" y="'+(H-10)+'" font-size="20" fill="var(--muted)">'+esc(dshort(c[0][0]))+'</text><text x="'+(W-R)+'" y="'+(H-10)+'" text-anchor="end" font-size="20" fill="var(--muted)">'+esc(dshort(c[n-1][0]))+'</text>';
+    var poly=n>1?'<polyline points="'+line.join(' ')+'" fill="none" stroke="var(--acc)" stroke-width="2"/>':'';
+    return '<svg class="cl-chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(x.name)+': '+pl(n,'check')+', '+pl(tot,'change')+'">'+ax+parts.join('')+poly+'</svg>'+
+      '<div class="cl-key"><span><i style="background:var(--ch)"></i>changed</span><span><i style="background:var(--ok)"></i>no change</span><span><i style="background:var(--nr)"></i>not read</span><span><i style="background:var(--acc)"></i>running total of changes</span></div>'+
+      '<p class="cl-note">'+pl(n,'check')+' since '+esc(t(c[0][0]))+': '+pl(tot,'change')+(nr?', '+nr+' not read':'')+'. One bar per check, oldest on the left.</p>';
+  }
+  function tlog(x){
+    var ch=x.changes||[],chk=x.chk||[];var items=ch.map(function(e){
+      var w='Text changed: '+pl(e.added,'line')+' added, '+pl(e.removed,'line')+' removed; '+e.words_before+' → '+e.words_after+' words.';
+      var q=(e.sample_added||[]).map(function(s){return '<q><b>Added:</b> '+esc(s)+'</q>';}).join('')+(e.sample_removed||[]).map(function(s){return '<q><b>Removed:</b> '+esc(s)+'</q>';}).join('');
+      return '<li><time datetime="'+esc(e.at)+'">'+esc(t(e.at))+'</time>'+esc(w)+q+'</li>';});
+    if(x.baseline_at)items.push('<li><time datetime="'+esc(x.baseline_at)+'">'+esc(t(x.baseline_at))+'</time>Baseline set: the text read at this check is the one later checks are compared with.</li>');
+    var quiet=chk.filter(function(k){return k[1]===0;}).length,nr=chk.filter(function(k){return k[1]===-1;}).length;
+    return '<ul class="cl-log">'+(items.join('')||'<li>No checks recorded yet.</li>')+'</ul><p class="cl-note">'+(ch.length?'':'No change recorded. ')+pl(quiet,'check')+' with no change'+(nr?' and '+nr+' not read':'')+' are not listed. Newest first.</p>';
+  }
+  function show(x){$('cl-m-h').textContent=x.name;$('cl-m-u').textContent=(x.url||'').replace(/^https?:\/\//,'');$('cl-pg').innerHTML=chart(x);$('cl-pt').innerHTML=tlog(x);view(true);openD($('cl-m'));}
+  window.__clShow=function(i){if(window.__clData&&window.__clData[i])show(window.__clData[i]);};
   fetch('uptime.json?cb='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(d){
-    $('up-last').textContent=d.last_run?t(d.last_run.at):'pending';
-    $('up-next').textContent=d.next_check?t(d.next_check):'06:00 or 18:00 UTC';
-    var c=(d.checks||[]).map(function(x){
-      var cls=x.up===false?'is-dn':x.up?'is-up':'';
-      var st=x.up==null?'○ not checked yet':x.up?'● Up':'✕ Down';
-      var sp=(x.hist||[]).slice(0,12).reverse().map(function(h){var ok=h[1]>=200&&h[1]<400;return '<i class="'+(ok?'':'b')+'" title="'+esc(h[0].slice(0,16).replace('T',' '))+' UTC · HTTP '+esc(h[1])+' · '+esc(h[2])+' ms"></i>';}).join('');
-      return '<div class="up-card '+cls+'"><div class="up-name">'+esc(x.name)+'</div><div class="up-url">'+esc((x.url||'').replace(/^https?:\/\//,''))+'</div>'+
-        '<div class="up-state">'+st+'</div><div class="up-small">HTTP '+esc(x.status)+(x.error?' · '+esc(x.error):'')+(x.ms!=null?' · '+esc(x.ms)+' ms':'')+'</div>'+
-        (x.since?'<div class="up-small">In this state since '+esc(t(x.since))+'</div>':'')+
-        (x.pend?'<div class="up-pend">A change to '+(x.pend.up?'up':'down')+' is waiting for its confirm check</div>':'')+
-        (sp?'<div class="up-spark" aria-label="Last checks, oldest first">'+sp+'</div>':'')+'</div>';
-    }).join('');
-    $('up-cards').innerHTML=c||'<p class="up-note">No checks yet.</p>';
-    var o=(d.outages||[]);
-    $('up-out').innerHTML=o.length?'<table><thead><tr><th>Site</th><th>Start</th><th>End</th><th>Length</th><th>HTTP codes</th></tr></thead><tbody>'+o.map(function(x){
-      return '<tr><td>'+esc(x.name)+'</td><td>'+esc(t(x.start))+(x.start_note?'<br><small>'+esc(x.start_note)+'</small>':'')+'</td><td>'+(x.end?esc(t(x.end)):'ongoing')+'</td><td>'+esc(x.end?dur(x.minutes):'')+'</td><td>'+esc((x.codes||[]).join(', '))+'</td></tr>';
-    }).join('')+'</tbody></table>':'<p class="up-note">No outage recorded in the last 90 days.</p>';
+    var cs=d.checks||[];window.__clData=cs;
+    $('cl-last').textContent=d.last_run?t(d.last_run.at):'pending';
+    $('cl-next').textContent=d.next_check?t(d.next_check):'06:00 or 18:00 UTC';
+    var total=0;cs.forEach(function(x){total+=(x.changes||[]).length;});$('cl-n').textContent=String(total);
+    var recent=Date.now()-14*864e5;
+    $('cl-rows').innerHTML=cs.map(function(x,i){
+      var chg=x.changed_at&&Date.parse(x.changed_at)>=recent,last=(x.chk||[])[0];
+      var st=x.changed_at?(chg?'Changed '+t(x.changed_at):'No change since '+t(x.changed_at)):(x.baseline_at?'No change since '+t(x.baseline_at)+' (baseline)':'Not read yet');
+      if(last&&last[1]===-1)st+=' · not read at the last check';
+      return '<li class="cl-row'+(chg?' is-ch':'')+'"><div class="cl-txt"><div class="cl-name">'+esc(x.name)+'</div><div class="cl-url">'+esc((x.url||'').replace(/^https?:\/\//,''))+'</div><div class="cl-state">'+esc(st)+'</div></div>'+
+        '<button type="button" class="cl-g" data-i="'+i+'" aria-haspopup="dialog" aria-label="Graph and text log for '+esc(x.name)+'" title="Graph and text log">'+ICON+'</button></li>';
+    }).join('')||'<li class="cl-note">No pages yet.</li>';
+    Array.prototype.forEach.call(document.querySelectorAll('.cl-g'),function(b){b.onclick=function(){show(cs[+b.getAttribute('data-i')]);};});
   }).catch(function(e){
-    $('up-last').textContent='unavailable';
-    $('up-cards').innerHTML='<p class="up-note">The live data could not be read just now ('+esc(e.message)+'). Try again in a minute.</p>';
-    $('up-out').innerHTML='';
+    $('cl-last').textContent='unavailable';
+    $('cl-rows').innerHTML='<li class="cl-note">The live data could not be read just now ('+esc(e.message)+'). Try again in a minute.</li>';
   });
 })();
 </script>

@@ -1,21 +1,20 @@
-# cedwyn-uptime — Uptime (Cedwyn webapp, number pending)
+# cedwyn-uptime — Change log monitor (Cedwyn webapp 59 of 59)
 
-**Live:** https://cedwyn.bucklerfamily.estate/uptime/ (also https://bucklerfamily.estate/uptime/) — this repo's `main`, folder `public/`,
-copied into the site by the central Cedwyn build (`split-repos.json` row "Uptime", deploy `repo`; `themes.json` id `uptime`).
+**Live:** https://bucklerfamily.estate/uptime/ — this repo's `main`, folder `public/`, copied into the site by the central Cedwyn build
+(`split-repos.json` row "Uptime", deploy `repo`; `themes.json` id `uptime`, `"slot": 59`).
 
-Whether Archwilio (the Welsh Historic Environment Records), its record GGAT02038s and its `/wp/` path answer, with Coflein site 20182
-and Heneb checked at the same moment as controls.
+A change log of the Archwilio pages (the Welsh Historic Environment Records), its record GGAT02038s and its `/wp/` path, with Coflein
+site 20182 and Heneb read at the same moment as controls. No change, no news: a row is marked only when the page's text changed.
 
 ## Data
-- The page reads `uptime.json` in its own folder: `https://cedwyn.bucklerfamily.estate/uptime/uptime.json`. That path is not a file in
-  this repo: a Cloudflare zone route sends it to the change-monitor Worker (`ghf-watch`), which runs the checks and keeps the state, so the
-  data is always live and a push here is never needed for fresh numbers.
-- Schedule: twice a day at **06:00 and 18:00 UTC**, inside the Worker's shared 5-minute cron (the site/branch monitor keeps its 5-minute
-  pace). A change of state counts after 2 checks in a row; the confirming re-check runs 5 minutes after a check that differs. A missed
-  slot is caught up on the next run more than 12 h 15 min after the last check. 90 days of outages are kept.
-- Fields: `checks[]` (name, url, status, ms, up, since, pend, hist), `outages[]`, `last_run`, `next_check`, `schedule_utc`, `confirm_checks`,
-  `keep_days`.
-- The old addresses `watch.bucklerfamily.estate/uptime` and `/uptime.json` answer 301 to this page and its data.
+- The page reads `uptime.json` in its own folder (`https://bucklerfamily.estate/uptime/uptime.json`). That path is not a file in this
+  repo: a Cloudflare zone route sends it to the change-monitor Worker (`ghf-watch`), which runs the checks and keeps the state.
+- Schedule: twice a day at **06:00 and 18:00 UTC**. Each check reads every page, reduces it to its visible text (no scripts, styles,
+  markup, or a line that is only the page's own date-and-time stamp) and compares a short hash with the last check.
+- Per page (`checks[]`): `hash`, `baseline_at`, `changed_at`, `changes[]` (at, added/removed line counts, words before/after, up to 4
+  sample lines each way; lines carrying words the editorial rules keep out are counted, not quoted), `chk[]` = `[time, mark]` per check,
+  newest first, up to 180 (2 = baseline, 1 = changed, 0 = no change, -1 = not read). `status`, `hist`, `outages[]` remain for reference.
+- The graph button on each row opens a dialog: a bar per check with a running total of changes, and a text log view (newest first).
+- The old addresses `watch.bucklerfamily.estate/uptime`, `/uptime/`, `/uptime.html` and `/uptime.json` answer 301 straight to this page / JSON.
 
-## Rules
-Public text never names private people; no outbound links (site addresses appear as text). Commits carry the agent signature; no force-push.
+— Sion's Tab agent
