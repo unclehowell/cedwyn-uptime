@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB" data-ghf-native="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="app-version" content="1.0.0">
+<title>Uptime · Archwilio and its controls · Cedwyn Estate</title>
+<meta name="description" content="Up or down: Archwilio (the Welsh Historic Environment Records) and the record GGAT02038s, with Coflein and Heneb as controls. Checked twice a day at 06:00 and 18:00 UTC; a change counts after two checks in a row; 90 days of outages.">
+<link rel="canonical" href="https://cedwyn.bucklerfamily.estate/uptime/">
+<meta property="og:title" content="Uptime · Archwilio and its controls · Cedwyn Estate">
+<meta property="og:description" content="Is Archwilio up? Checked twice a day, with Coflein and Heneb as controls, and 90 days of outages.">
+<meta property="og:url" content="https://cedwyn.bucklerfamily.estate/uptime/">
+<meta name="theme-color" content="#11161c">
+<style>
+:root{color-scheme:light dark;--bg:#f6f4ef;--panel:#fff;--ink:#1d2329;--body:#38424b;--muted:#6b7680;--line:#d9d4ca;--up:#1f7a46;--dn:#b3261e;--pend:#9a6a00}
+html[data-ghf-mode=night]{--bg:#11161c;--panel:#18202a;--ink:#f1f3f5;--body:#c9d1d8;--muted:#93a0ab;--line:#2f3b47;--up:#5fd08f;--dn:#ff8a80;--pend:#f0c75e}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--body);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.up-wrap{max-width:980px;margin:0 auto;padding:20px 16px 56px}
+.up-eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(1.8rem,6vw,2.8rem);line-height:1.08;margin:6px 0 8px;color:var(--ink);letter-spacing:-.03em}
+.up-lede{margin:0 0 14px;max-width:62ch}
+.up-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.up-pill{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 11px;font-size:13px}
+.up-pill b{color:var(--ink)}
+.up-ver{display:inline-flex;align-items:center;gap:6px}
+.up-i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:700 12px/1 Georgia,serif;cursor:pointer;padding:0}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 12px 6px;margin:0 0 16px}
+h2{font-size:1.05rem;margin:2px 0 10px;color:var(--ink)}
+.up-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:8px}
+.up-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;border-left:5px solid var(--muted)}
+.up-card.is-up{border-left-color:var(--up)}.up-card.is-dn{border-left-color:var(--dn)}
+.up-name{font-weight:700;color:var(--ink)}.up-url{font-size:12px;color:var(--muted);word-break:break-all}
+.up-state{font-weight:800;margin-top:4px}.is-up .up-state{color:var(--up)}.is-dn .up-state{color:var(--dn)}
+.up-small{font-size:13px;color:var(--muted)}.up-pend{color:var(--pend);font-size:13px;font-weight:600}
+.up-spark{display:flex;gap:3px;margin-top:6px}.up-spark i{display:block;width:12px;height:12px;border-radius:2px;background:var(--up)}.up-spark i.b{background:var(--dn)}
+.up-tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{text-align:left;padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600;border-top:0}
+.up-note{font-size:13px;color:var(--muted);margin:6px 0 10px}
+dialog{max-width:min(560px,92vw);border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--body)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+</style>
+<script>window.__cedwynLP="/uptime/"</script><script src="/_cedwyn/ghf/ghf-boot.js?v=2.1.30"></script>
+</head>
+<body>
+<main class="up-wrap" id="up" data-version="1.0.0">
+  <div class="up-eyebrow">Cedwyn · record availability</div>
+  <h1>Uptime: Archwilio and its controls</h1>
+  <p class="up-lede">Whether the Welsh Historic Environment Records site Archwilio, and its record GGAT02038s, answer. Coflein and Heneb are checked at the same moment as controls, so an outage on one site can be told apart from a wider one.</p>
+  <div class="up-meta">
+    <span class="up-pill">Checked <b>twice a day</b>: 06:00 and 18:00 UTC</span>
+    <span class="up-pill">Last check: <b id="up-last">loading…</b></span>
+    <span class="up-pill">Next check: <b id="up-next">…</b></span>
+    <span class="up-pill up-ver">v1.0.0 · free <button type="button" class="up-i" id="up-i" aria-haspopup="dialog" aria-controls="up-log" title="Version history">i</button></span>
+  </div>
+  <section aria-labelledby="up-now-h"><h2 id="up-now-h">Now</h2><div class="up-cards" id="up-cards"><p class="up-note">Loading the latest check…</p></div></section>
+  <section aria-labelledby="up-out-h"><h2 id="up-out-h">Outages, last 90 days</h2><div class="up-tw" id="up-out"><p class="up-note">Loading…</p></div></section>
+  <p class="up-note">A site counts as up when it answers with HTTP 200–399 within 25 seconds. A change of state counts only after two checks in a row agree; the confirming re-check runs five minutes after a check that differs. HTTP 0 means no answer within 25 s; 52x means the site's own server did not answer its CDN. The site addresses are shown as text only. Data: <a href="uptime.json">uptime.json</a> (live).</p>
+  <noscript><p class="up-note">This page needs JavaScript to show the checks; the raw data is at uptime.json in this folder.</p></noscript>
+</main>
+<dialog id="up-log" aria-label="Version history"><h2>Version history</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead><tbody>
+<tr><td>v1.0.0</td><td>11 Nov 2026</td><td>The uptime page becomes its own Cedwyn webapp at /uptime/. Checks move from every 5 minutes to twice a day (06:00 and 18:00 UTC) with a 5-minute confirm re-check. Shared header, footer and Day/Night theme.</td></tr>
+<tr><td>v0.1.0</td><td>24 Oct 2026</td><td>First uptime page on the change monitor, checked every 5 minutes.</td></tr>
+</tbody></table><p><button type="button" id="up-log-x">Close</button></p></dialog>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var lon;try{lon=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});}catch(e){lon=null;}
+  function t(s){if(!s)return '';var d=new Date(s);if(isNaN(d))return s;var hm=s.slice(11,16);var u=d.getUTCDate()+' '+M[d.getUTCMonth()]+' '+d.getUTCFullYear()+', '+hm+' UTC';try{var l=lon&&lon.format(d);if(l&&l!==hm)u+=' ('+l+' UK)';}catch(e){}return u;}
+  function dur(m){if(m==null)return '';if(m<120)return m+' min';var h=Math.round(m/6)/10;return h<48?h+' h':Math.round(h/2.4)/10+' days';}
+  var dlg=$('up-log');$('up-i').onclick=function(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');};
+  $('up-log-x').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open');};
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  fetch('uptime.json?cb='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(d){
+    $('up-last').textContent=d.last_run?t(d.last_run.at):'pending';
+    $('up-next').textContent=d.next_check?t(d.next_check):'06:00 or 18:00 UTC';
+    var c=(d.checks||[]).map(function(x){
+      var cls=x.up===false?'is-dn':x.up?'is-up':'';
+      var st=x.up==null?'○ not checked yet':x.up?'● Up':'✕ Down';
+      var sp=(x.hist||[]).slice(0,12).reverse().map(function(h){var ok=h[1]>=200&&h[1]<400;return '<i class="'+(ok?'':'b')+'" title="'+esc(h[0].slice(0,16).replace('T',' '))+' UTC · HTTP '+esc(h[1])+' · '+esc(h[2])+' ms"></i>';}).join('');
+      return '<div class="up-card '+cls+'"><div class="up-name">'+esc(x.name)+'</div><div class="up-url">'+esc((x.url||'').replace(/^https?:\/\//,''))+'</div>'+
+        '<div class="up-state">'+st+'</div><div class="up-small">HTTP '+esc(x.status)+(x.error?' · '+esc(x.error):'')+(x.ms!=null?' · '+esc(x.ms)+' ms':'')+'</div>'+
+        (x.since?'<div class="up-small">In this state since '+esc(t(x.since))+'</div>':'')+
+        (x.pend?'<div class="up-pend">A change to '+(x.pend.up?'up':'down')+' is waiting for its confirm check</div>':'')+
+        (sp?'<div class="up-spark" aria-label="Last checks, oldest first">'+sp+'</div>':'')+'</div>';
+    }).join('');
+    $('up-cards').innerHTML=c||'<p class="up-note">No checks yet.</p>';
+    var o=(d.outages||[]);
+    $('up-out').innerHTML=o.length?'<table><thead><tr><th>Site</th><th>Start</th><th>End</th><th>Length</th><th>HTTP codes</th></tr></thead><tbody>'+o.map(function(x){
+      return '<tr><td>'+esc(x.name)+'</td><td>'+esc(t(x.start))+(x.start_note?'<br><small>'+esc(x.start_note)+'</small>':'')+'</td><td>'+(x.end?esc(t(x.end)):'ongoing')+'</td><td>'+esc(x.end?dur(x.minutes):'')+'</td><td>'+esc((x.codes||[]).join(', '))+'</td></tr>';
+    }).join('')+'</tbody></table>':'<p class="up-note">No outage recorded in the last 90 days.</p>';
+  }).catch(function(e){
+    $('up-last').textContent='unavailable';
+    $('up-cards').innerHTML='<p class="up-note">The live data could not be read just now ('+esc(e.message)+'). Try again in a minute.</p>';
+    $('up-out').innerHTML='';
+  });
+})();
+</script>
+</body>
+</html>
